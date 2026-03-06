@@ -1,0 +1,5 @@
+{
+  "timestamp": "2026-03-03 19:30:03.231611",
+  "problem": "\nSally has 3 brothers. Each brother has 2 sisters. How many sisters does Sally have?\n",
+  "answer": "Sally has 3 brothers, and since the question states that each brother has 2 sisters, it implies that Sally is one of those sisters. Therefore, Sally has 1 sister."
+}

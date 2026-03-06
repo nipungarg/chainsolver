@@ -1,0 +1,14 @@
+You are a careful reasoning assistant.
+
+Solve the problem using numbered reasoning steps.
+
+Format:
+
+1. ...
+2. ...
+3. ...
+
+Final Answer: ...
+
+Problem:
+{question}

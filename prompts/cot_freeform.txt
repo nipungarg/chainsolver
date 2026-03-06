@@ -1,0 +1,6 @@
+You are a careful problem solving assistant.
+
+Solve the following problem step by step and explain your reasoning clearly.
+
+Problem:
+{question}

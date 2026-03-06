@@ -1,0 +1,27 @@
+[
+  {
+    "problem_id": 1,
+    "question": "If a shirt costs $20 and a 10% tax is applied, what is the final price?",
+    "output": "Step 1: Understand the problem  \nWe need to calculate the final price of a shirt after applying a 10% tax to its original price of $20.\n\nStep 2: Extract important values  \n- Original price of the shirt: $20  \n- Tax rate: 10%  \n\nStep 3: Perform the calculation  \nFirst, we calculate the amount of tax:  \nTax amount = Original price \u00d7 Tax rate  \nTax amount = $20 \u00d7 0.10 = $2  \n\nNext, we add the tax amount to the original price to find the final price:  \nFinal price = Original price + Tax amount  \nFinal price = $20 + $2 = $22  \n\nStep 4: Verify the result  \nTo verify, we can check the calculations:  \n- 10% of $20 is indeed $2.  \n- Adding $2 to the original price of $20 gives us $22.  \n\nFinal Answer: $22"
+  },
+  {
+    "problem_id": 2,
+    "question": "A train travels 60 km in 1 hour. How far will it travel in 3.5 hours?",
+    "output": "Step 1: Understand the problem  \nThe problem states that a train travels 60 kilometers in 1 hour. We need to determine how far the train will travel in 3.5 hours.\n\nStep 2: Extract important values  \n- Speed of the train = 60 km/hour  \n- Time = 3.5 hours  \n\nStep 3: Perform the calculation  \nTo find the distance traveled in 3.5 hours, we can use the formula:  \nDistance = Speed \u00d7 Time  \nDistance = 60 km/hour \u00d7 3.5 hours  \nDistance = 210 km  \n\nStep 4: Verify the result  \nTo verify, we can break it down:  \n- In 1 hour, the train travels 60 km.  \n- In 3 hours, it would travel 3 \u00d7 60 km = 180 km.  \n- In the additional 0.5 hours, it would travel 0.5 \u00d7 60 km = 30 km.  \n- Adding these together: 180 km + 30 km = 210 km.  \n\nFinal Answer:  \nThe train will travel 210 kilometers in 3.5 hours."
+  },
+  {
+    "problem_id": 3,
+    "question": "John has 3 apples. He buys 4 more and gives 2 away. How many apples does he have now?",
+    "output": "Step 1: Understand the problem  \nWe need to determine how many apples John has after he starts with a certain number, buys more, and then gives some away.\n\nStep 2: Extract important values  \n- Initial number of apples: 3  \n- Apples bought: 4  \n- Apples given away: 2  \n\nStep 3: Perform the calculation  \n1. Start with the initial number of apples: 3  \n2. Add the apples he bought: 3 + 4 = 7  \n3. Subtract the apples he gave away: 7 - 2 = 5  \n\nStep 4: Verify the result  \n- Initial apples: 3  \n- After buying: 3 + 4 = 7  \n- After giving away: 7 - 2 = 5  \nThe calculations are consistent and correct.\n\nFinal Answer: John has 5 apples now."
+  },
+  {
+    "problem_id": 4,
+    "question": "If 5 workers complete a job in 10 days, how long would it take 10 workers?",
+    "output": "Step 1: Understand the problem  \nWe need to determine how long it would take for 10 workers to complete the same job that 5 workers can complete in 10 days.\n\nStep 2: Extract important values  \n- Number of workers initially: 5  \n- Time taken by 5 workers: 10 days  \n- Number of workers we want to consider: 10  \n\nStep 3: Perform the calculation  \nFirst, we calculate the total amount of work done in worker-days.  \nTotal work = Number of workers \u00d7 Time taken = 5 workers \u00d7 10 days = 50 worker-days.\n\nNow, we need to find out how long it would take for 10 workers to complete the same amount of work.  \nLet \\( x \\) be the number of days it takes for 10 workers to complete the job.  \nTotal work done by 10 workers in \\( x \\) days = 10 workers \u00d7 \\( x \\) days = 10x worker-days.\n\nSetting the two expressions for total work equal to each other:  \n10x = 50 worker-days  \nNow, solve for \\( x \\):  \n\\( x = \\frac{50}{10} = 5 \\) days.\n\nStep 4: Verify the result  \nIf 10 workers can complete the job in 5 days, then the total work done would be:  \n10 workers \u00d7 5 days = 50 worker-days, which matches the total work calculated earlier (50 worker-days). Thus, the calculation is verified.\n\nFinal Answer:  \nIt would take 10 workers 5 days to complete the job."
+  },
+  {
+    "problem_id": 5,
+    "question": "A rectangle has length 8 and width 5. What is its area?",
+    "output": "Step 1: Understand the problem  \nWe need to find the area of a rectangle given its length and width.\n\nStep 2: Extract important values  \nThe length of the rectangle is 8 units, and the width is 5 units.\n\nStep 3: Perform the calculation  \nThe formula for the area \\( A \\) of a rectangle is given by:  \n\\[ A = \\text{length} \\times \\text{width} \\]  \nSubstituting the values:  \n\\[ A = 8 \\times 5 = 40 \\]\n\nStep 4: Verify the result  \nTo verify, we can check the multiplication:  \n8 multiplied by 5 equals 40. This confirms our calculation is correct.\n\nFinal Answer:  \nThe area of the rectangle is 40 square units."
+  }
+]

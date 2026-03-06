@@ -1,0 +1,5 @@
+{
+  "timestamp": "2026-03-03 19:30:24.113200",
+  "problem": "\nSally has 3 brothers. Each brother has 2 sisters. How many sisters does Sally have?\n",
+  "cot_output": "To solve the problem, let's break it down step by step.\n\n1. **Identify the family members**: \n   - Sally has 3 brothers.\n   - Each of these brothers has 2 sisters.\n\n2. **Understanding the relationships**:\n   - Since Sally is one of the sisters, we need to determine how many sisters she has.\n   - The problem states that each brother has 2 sisters. \n\n3. **Counting the sisters**:\n   - If each brother has 2 sisters and one of those sisters is Sally, then the other sister must be someone else.\n   - Therefore, the total number of sisters is 2 (the sisters that each brother has).\n\n4. **Conclusion**:\n   - Since Sally is one of the sisters, and there is one more sister, Sally has 1 sister.\n\nThus, the final answer is that Sally has **1 sister**."
+}

@@ -1,1 +1,2 @@
-# Add project dependencies here
+python-dotenv==1.2.1
+openai==2.17.0

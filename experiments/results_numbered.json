@@ -1,0 +1,27 @@
+[
+  {
+    "problem_id": 1,
+    "question": "If a shirt costs $20 and a 10% tax is applied, what is the final price?",
+    "output": "1. Determine the cost of the shirt: The shirt costs $20.\n2. Calculate the amount of tax: The tax rate is 10%, so the tax amount is calculated as follows: \n   \\[\n   \\text{Tax} = \\text{Cost} \\times \\text{Tax Rate} = 20 \\times 0.10 = 2\n   \\]\n3. Calculate the final price: Add the tax amount to the original cost of the shirt:\n   \\[\n   \\text{Final Price} = \\text{Cost} + \\text{Tax} = 20 + 2 = 22\n   \\]\n\nFinal Answer: $22"
+  },
+  {
+    "problem_id": 2,
+    "question": "A train travels 60 km in 1 hour. How far will it travel in 3.5 hours?",
+    "output": "1. Determine the speed of the train. The train travels 60 km in 1 hour, so its speed is 60 km/h.\n2. Calculate the distance the train will travel in 3.5 hours using the formula: Distance = Speed \u00d7 Time.\n3. Substitute the values into the formula: Distance = 60 km/h \u00d7 3.5 hours.\n\nFinal Answer: 210 km."
+  },
+  {
+    "problem_id": 3,
+    "question": "John has 3 apples. He buys 4 more and gives 2 away. How many apples does he have now?",
+    "output": "1. Start with the number of apples John initially has: 3 apples.\n2. Add the number of apples he buys: 3 apples + 4 apples = 7 apples.\n3. Subtract the number of apples he gives away: 7 apples - 2 apples = 5 apples.\n\nFinal Answer: John has 5 apples now."
+  },
+  {
+    "problem_id": 4,
+    "question": "If 5 workers complete a job in 10 days, how long would it take 10 workers?",
+    "output": "1. Determine the total amount of work done in worker-days. If 5 workers complete a job in 10 days, the total work can be calculated as:\n   \\[\n   \\text{Total work} = \\text{Number of workers} \\times \\text{Number of days} = 5 \\text{ workers} \\times 10 \\text{ days} = 50 \\text{ worker-days}\n   \\]\n\n2. Calculate the number of days it would take for 10 workers to complete the same amount of work. Let \\( x \\) be the number of days it takes for 10 workers to complete the job. The total work done by 10 workers in \\( x \\) days is:\n   \\[\n   \\text{Total work} = 10 \\text{ workers} \\times x \\text{ days} = 10x \\text{ worker-days}\n   \\]\n\n3. Set the total work done by 10 workers equal to the total work calculated in step 1:\n   \\[\n   10x = 50\n   \\]\n\n4. Solve for \\( x \\):\n   \\[\n   x = \\frac{50}{10} = 5 \\text{ days}\n   \\]\n\nFinal Answer: 5 days"
+  },
+  {
+    "problem_id": 5,
+    "question": "A rectangle has length 8 and width 5. What is its area?",
+    "output": "1. Identify the formula for the area of a rectangle, which is given by the formula: Area = Length \u00d7 Width.\n2. Substitute the given values into the formula. Here, the length is 8 and the width is 5.\n3. Calculate the area: Area = 8 \u00d7 5 = 40.\n\nFinal Answer: 40"
+  }
+]

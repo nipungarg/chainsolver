@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "question": "If a shirt costs $20 and a 10% tax is applied, what is the final price?"
+  },
+  {
+    "id": 2,
+    "question": "A train travels 60 km in 1 hour. How far will it travel in 3.5 hours?"
+  },
+  {
+    "id": 3,
+    "question": "John has 3 apples. He buys 4 more and gives 2 away. How many apples does he have now?"
+  },
+  {
+    "id": 4,
+    "question": "If 5 workers complete a job in 10 days, how long would it take 10 workers?"
+  },
+  {
+    "id": 5,
+    "question": "A rectangle has length 8 and width 5. What is its area?"
+  }
+]
