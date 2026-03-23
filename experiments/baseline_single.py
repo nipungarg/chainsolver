@@ -1,58 +1,26 @@
-import json
-import os
-from openai import OpenAI
-from dotenv import load_dotenv
-load_dotenv()
+"""Single-call baseline: one LLM response per question."""
+from config import ROOT, load_env, get_client, get_model
+from utils.io import load_prompt, load_json, save_json
+from utils.llm import call_llm_single
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-MODEL = os.getenv("LLM_MODEL")
-
-
-def load_prompt():
-    with open("../prompts/baseline_reasoning.txt") as f:
-        return f.read()
-
-
-def load_problems():
-    with open("../tests/reasoning_problems.json") as f:
-        return json.load(f)
-
-
-def ask_llm(prompt):
-
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0
-    )
-
-    return response.choices[0].message.content
+load_env()
+client = get_client()
+MODEL = get_model()
 
 
 def main():
-
-    prompt_template = load_prompt()
-    problems = load_problems()
-
+    prompt_template = load_prompt(ROOT, "prompts", "baseline_reasoning.txt")
+    problems = load_json(ROOT, "tests", "reasoning_problems.json")
     results = []
 
     for p in problems:
-
         prompt = prompt_template.replace("{question}", p["question"])
-
-        output = ask_llm(prompt)
-
+        output = call_llm_single(client, MODEL, prompt)
         print("\nProblem:", p["question"])
         print(output)
+        results.append({"question": p["question"], "output": output})
 
-        results.append({
-            "question": p["question"],
-            "output": output
-        })
-
-    with open("../experiments/results_single.json", "w") as f:
-        json.dump(results, f, indent=2)
+    save_json(ROOT, results, "experiments", "results_single.json")
 
 
 if __name__ == "__main__":

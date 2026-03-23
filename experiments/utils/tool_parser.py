@@ -1,22 +1,14 @@
 import re
 
-def parse_action(text):
+from utils.answer_parser import extract_final_answer
 
+# Re-export for callers that expect parse_final_answer from tool_parser
+parse_final_answer = extract_final_answer
+
+
+def parse_action(text: str) -> tuple[str | None, str | None]:
+    """Extract Action: tool_name(argument); returns (tool, argument) or (None, None)."""
     action_match = re.search(r"Action:\s*(\w+)\((.*?)\)", text)
-
     if action_match:
-        tool = action_match.group(1)
-        argument = action_match.group(2)
-        return tool, argument
-
+        return action_match.group(1), action_match.group(2)
     return None, None
-
-
-def parse_final_answer(text):
-
-    match = re.search(r"Final Answer:\s*(.*)", text)
-
-    if match:
-        return match.group(1)
-
-    return None

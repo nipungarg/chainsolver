@@ -1,101 +1,50 @@
-import json
-import os
-from openai import OpenAI
+"""Reflection: generate reasoning, then critique and refine."""
+from config import ROOT, load_env, get_client, get_model
 from utils.answer_parser import extract_final_answer
-from dotenv import load_dotenv
-load_dotenv()
+from utils.io import load_prompt, load_json, save_json
+from utils.llm import call_llm_single
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-MODEL = os.getenv("LLM_MODEL")
-
-
-def load_prompt(path):
-    with open(path) as f:
-        return f.read()
+load_env()
+client = get_client()
+MODEL = get_model()
 
 
-def load_problems():
-    with open("../tests/reasoning_problems.json") as f:
-        return json.load(f)
-
-
-def ask_llm(prompt, temperature=0):
-
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=temperature
-    )
-
-    return response.choices[0].message.content
-
-
-def generate_initial_reasoning(question, prompt_template):
-
+def generate_reasoning(question: str, prompt_template: str, temperature: float = 0) -> str:
     prompt = prompt_template.replace("{question}", question)
-
-    return ask_llm(prompt)
-
-
-def critique_reasoning(question, reasoning, critique_template):
-
-    critique_prompt = critique_template.replace("{question}", question)
-
-    critique_prompt = critique_prompt.replace("{reasoning}", reasoning)
-
-    return ask_llm(critique_prompt)
+    return call_llm_single(client, MODEL, prompt, temperature=temperature)
 
 
-def solve_with_reflection(question, reasoning_prompt, critique_prompt):
+def critique_reasoning(question: str, reasoning: str, critique_template: str) -> str:
+    prompt = critique_template.replace("{question}", question).replace("{reasoning}", reasoning)
+    return call_llm_single(client, MODEL, prompt)
 
-    initial_reasoning = generate_initial_reasoning(
-        question,
-        reasoning_prompt
-    )
 
-    critique = critique_reasoning(
-        question,
-        initial_reasoning,
-        critique_prompt
-    )
-
+def solve_with_reflection(question: str, reasoning_template: str, critique_template: str) -> dict:
+    initial = generate_reasoning(question, reasoning_template)
+    critique = critique_reasoning(question, initial, critique_template)
     return {
-        "initial_reasoning": initial_reasoning,
+        "initial_reasoning": initial,
         "critique": critique,
-        "initial_answer": extract_final_answer(initial_reasoning),
-        "final_answer": extract_final_answer(critique)
+        "initial_answer": extract_final_answer(initial),
+        "final_answer": extract_final_answer(critique),
     }
 
 
 def main():
-
-    problems = load_problems()
-
-    reasoning_prompt = load_prompt("../prompts/baseline_reasoning.txt")
-
-    critique_prompt = load_prompt("../prompts/critique_prompt.txt")
-
+    problems = load_json(ROOT, "tests", "reasoning_problems.json")
+    reasoning_prompt = load_prompt(ROOT, "prompts", "baseline_reasoning.txt")
+    critique_prompt = load_prompt(ROOT, "prompts", "critique_prompt.txt")
     results = []
 
     for p in problems:
-
         print("\n======================")
         print("Problem:", p["question"])
-
-        result = solve_with_reflection(
-            p["question"],
-            reasoning_prompt,
-            critique_prompt
-        )
-
-        print("\nInitial Answer:", result["initial_answer"])
+        result = solve_with_reflection(p["question"], reasoning_prompt, critique_prompt)
+        print("Initial Answer:", result["initial_answer"])
         print("Final Answer:", result["final_answer"])
-
         results.append(result)
 
-    with open("../experiments/results_reflection.json", "w") as f:
-        json.dump(results, f, indent=2)
+    save_json(ROOT, results, "experiments", "results_reflection.json")
 
 
 if __name__ == "__main__":

@@ -1,57 +1,35 @@
-import os
-from openai import OpenAI
-from dotenv import load_dotenv
-import json
-from datetime import datetime
+"""Minimal chain-of-thought: single problem with system prompt."""
+from config import ROOT, load_env, get_client, get_model
+from utils.io import save_json
+from utils.llm import call_llm
 
-load_dotenv()
+load_env()
+client = get_client()
+MODEL = get_model()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+PROBLEM = (
+    "Sally has 3 brothers. Each brother has 2 sisters. "
+    "How many sisters does Sally have?"
+)
+SYSTEM = "Solve the problem step by step. Show all reasoning before giving the final answer."
 
-MODEL = os.getenv("LLM_MODEL")
-
-PROBLEM = """
-A store sells pencils in packs of 12.
-If a school buys 17 packs and distributes them equally
-among 8 classrooms, how many pencils does each classroom get,
-and how many remain undistributed?
-"""
-
-PROBLEM2 = """
-Sally has 3 brothers. Each brother has 2 sisters. How many sisters does Sally have?
-"""
 
 def run_cot():
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {
-                "role": "system",
-                "content": "Solve the problem step by step. Show all reasoning before giving the final answer."
-            },
-            {
-                "role": "user",
-                "content": PROBLEM2
-            }
+    answer = call_llm(
+        client,
+        MODEL,
+        [
+            {"role": "system", "content": SYSTEM},
+            {"role": "user", "content": PROBLEM},
         ],
-        temperature=0
     )
-
-    answer = response.choices[0].message.content
-
     result = {
-        "timestamp": str(datetime.now()),
-        "problem": PROBLEM2,
-        "cot_output": answer
+        "problem": PROBLEM,
+        "cot_output": answer,
     }
+    save_json(ROOT, result, "experiments", "results", "cot_basic.json")
+    print("Chain-of-thought output:\n", answer)
 
-    os.makedirs("experiments/results", exist_ok=True)
-
-    with open("experiments/results/cot_basic.json", "w") as f:
-        json.dump(result, f, indent=2)
-
-    print("Chain-of-thought output:\n")
-    print(answer)
 
 if __name__ == "__main__":
     run_cot()
